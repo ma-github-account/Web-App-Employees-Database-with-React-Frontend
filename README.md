@@ -2,6 +2,20 @@ This Django application is Employees Database. Application is integrated with AW
 
 The application is available here: https://www.michaldomain2.com/
 
+Technical Details:
+
+Backend - Frontend Connection
+
+The two sides communicate exclusively through a REST API. React never imports Python code; Python never imports JavaScript. The binding points are HTTP endpoints and, during development, a proxy rule.
+
+Django Templates & React Build
+
+There is exactly one Django template: the compiled React index.html. Django does not use its templating engine to generate HTML for end-users — it simply hands the pre-built React shell to the browser, and React takes over from there.
+
+Authentication Implementation
+
+Employees Database uses JWT (JSON Web Tokens) via djangorestframework-simplejwt. No cookies or sessions are involved in the API layer. The token is stored in localStorage on the client and sent as a Bearer header on every protected request.
+
 The folder contains two versions of application: basic one run locally and aws integrated.
 
 1.Basic version
